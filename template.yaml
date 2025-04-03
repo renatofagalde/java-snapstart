@@ -6,6 +6,10 @@ Globals:
     Timeout: 30
 
 Resources:
+  ApiGatewayDevelop:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: develop
   JavaSnapstartFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -25,5 +29,6 @@ Resources:
         javasnapstart:
           Type: Api
           Properties:
+            RestApiId: !Ref ApiGatewayDevelop
             Path: /{proxy+}
             Method: ANY
